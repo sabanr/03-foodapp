@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Recipe from './types/Recipe.ts';
 import Search from './components/Search';
+import FoodList from './components/FoodList';
 
 const App: React.FC = () => {
 	const [foodData, setFoodData] = useState<Recipe[]>([]);
@@ -8,12 +9,7 @@ const App: React.FC = () => {
 	return (
 		<div className="App">
 			<Search foodData={foodData} setFoodData={setFoodData} />
-			{foodData.map((recipe) => (
-				<div key={recipe.id}>
-					<h1>{recipe.title}</h1>
-					<img src={recipe.image} alt={recipe.title} />
-				</div>
-			))}
+			<FoodList foodData={foodData} />
 		</div>
 	);
 };

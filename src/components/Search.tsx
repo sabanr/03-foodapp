@@ -11,19 +11,33 @@ interface SearchProps {
 
 const Search: React.FC<SearchProps> = ({ setFoodData }) => {
 	const [query, setQuery] = useState<string>('pizza');
-	// syntax for the useEffect hook
-	useEffect(() => {}, []);
+	const [debouncedQuery, setDebouncedQuery] = useState<string>(query);
+
+	// Debounce the query input
+	useEffect(() => {
+		const handler = setTimeout(() => {
+			setDebouncedQuery(query);
+		}, 750); // 500ms debounce delay
+
+		return () => {
+			clearTimeout(handler); // Clear timeout on cleanup
+		};
+	}, [query]);
+
+	// Fetch data when debouncedQuery changes
 	useEffect(() => {
 		const fetchFood = async () => {
 			await fetch(
-				`${API_URL}?query=${query}&apiKey=${import.meta.env.VITE_API_KEY}`,
+				`${API_URL}?query=${debouncedQuery}&apiKey=${import.meta.env.VITE_API_KEY}`,
 			).then(async (response) => {
 				const data = (await response.json()) as ApiResponse;
 				setFoodData(data.results);
 			});
 		};
-		fetchFood();
-	}, [query, setFoodData]);
+		if (debouncedQuery) {
+			fetchFood();
+		}
+	}, [debouncedQuery, setFoodData]);
 
 	return (
 		<div>
