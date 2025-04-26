@@ -8,6 +8,7 @@ const App: React.FC = () => {
 
 	return (
 		<div className="App">
+			<Nav />
 			<Search foodData={foodData} setFoodData={setFoodData} />
 			<FoodList foodData={foodData} />
 		</div>
