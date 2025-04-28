@@ -5,6 +5,7 @@ import Recipe from './types/Recipe.ts';
 import Search from './components/Search';
 import FoodList from './components/FoodList';
 import Container from './components/Container.tsx';
+import InnerContainer from './components/InnerContainer.tsx';
 
 import './App.css';
 
@@ -16,7 +17,9 @@ const App: React.FC = () => {
 			<Nav />
 			<Search foodData={foodData} setFoodData={setFoodData} />
 			<Container>
-				<FoodList foodData={foodData} />
+				<InnerContainer>
+					<FoodList foodData={foodData} />
+				</InnerContainer>
 			</Container>
 		</div>
 	);
