@@ -4,9 +4,10 @@ import styles from './FoodItem.module.css';
 
 interface FoodListProps {
 	recipe: Recipe;
+	onRecipeSelect: (id: number) => void;
 }
 
-const FoodItem: React.FC<FoodListProps> = ({ recipe }) => {
+const FoodItem: React.FC<FoodListProps> = ({ recipe, onRecipeSelect }) => {
 	return (
 		<div className={styles.itemContainer}>
 			<img
@@ -18,7 +19,10 @@ const FoodItem: React.FC<FoodListProps> = ({ recipe }) => {
 				<p className={styles.itemName}>{recipe.title}</p>
 			</div>
 			<div className={styles.buttonContainer}>
-				<button className={styles.itemButton} type="button">
+				<button
+					onClick={() => onRecipeSelect(recipe.id)}
+					className={styles.itemButton}
+					type="button">
 					View Recipe
 				</button>
 			</div>

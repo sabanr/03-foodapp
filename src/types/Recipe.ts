@@ -1,7 +1,7 @@
-interface Recipe {
+interface IRecipe {
     id: number;
     title: string;
     image: string;
     imageType: string;
 }
-export default Recipe;
+export default IRecipe;
