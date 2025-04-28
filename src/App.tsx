@@ -1,4 +1,6 @@
 import { useState } from 'react';
+
+import Nav from './components/Nav';
 import Recipe from './types/Recipe.ts';
 import Search from './components/Search';
 import FoodList from './components/FoodList';

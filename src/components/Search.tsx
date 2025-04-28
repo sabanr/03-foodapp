@@ -27,12 +27,16 @@ const Search: React.FC<SearchProps> = ({ setFoodData }) => {
 	// Fetch data when debouncedQuery changes
 	useEffect(() => {
 		const fetchFood = async () => {
-			await fetch(
-				`${API_URL}?query=${debouncedQuery}&apiKey=${import.meta.env.VITE_API_KEY}`,
-			).then(async (response) => {
+			try {
+				const response = await fetch(
+					`${API_URL}?query=${debouncedQuery}&apiKey=${import.meta.env.VITE_API_KEY}`,
+				);
+
 				const data = (await response.json()) as ApiResponse;
 				setFoodData(data.results);
-			});
+			} catch (error) {
+				console.error('Error fetching food data:', error);
+			}
 		};
 		if (debouncedQuery) {
 			fetchFood();
