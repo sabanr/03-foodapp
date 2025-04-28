@@ -1,4 +1,6 @@
+import styles from './Nav.module.css';
+
 const Nav: React.FC = () => {
-	return <div> 🍔 FoodApp</div>;
+	return <div className={styles.nav}> 🍔 FoodApp</div>;
 };
 export default Nav;

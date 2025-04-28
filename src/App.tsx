@@ -5,6 +5,8 @@ import Recipe from './types/Recipe.ts';
 import Search from './components/Search';
 import FoodList from './components/FoodList';
 
+import './App.css';
+
 const App: React.FC = () => {
 	const [foodData, setFoodData] = useState<Recipe[]>([]);
 

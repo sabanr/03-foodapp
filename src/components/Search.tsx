@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import ApiResponse from '../types/ApiResponse';
 import Recipe from '../types/Recipe';
 
+import styles from './Search.module.css';
+
 const API_URL: string = 'https://api.spoonacular.com/recipes/complexSearch';
 
 interface SearchProps {
@@ -17,7 +19,7 @@ const Search: React.FC<SearchProps> = ({ setFoodData }) => {
 	useEffect(() => {
 		const handler = setTimeout(() => {
 			setDebouncedQuery(query);
-		}, 750); // 500ms debounce delay
+		}, 600); // 600ms debounce delay
 
 		return () => {
 			clearTimeout(handler); // Clear timeout on cleanup
@@ -44,8 +46,9 @@ const Search: React.FC<SearchProps> = ({ setFoodData }) => {
 	}, [debouncedQuery, setFoodData]);
 
 	return (
-		<div>
+		<div className={styles.searchContainer}>
 			<input
+				className={styles.input}
 				type="text"
 				title="Search"
 				value={query}
