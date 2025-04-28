@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 import Nav from './components/Nav';
-import Recipe from './types/Recipe.ts';
+import Recipe from './types/IRecipe.ts';
 import Search from './components/Search';
 import FoodList from './components/FoodList';
 import Container from './components/Container.tsx';

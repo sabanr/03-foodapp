@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import ApiResponse from '../types/ApiResponse';
-import Recipe from '../types/Recipe';
+import ApiResponse from '../types/IApiResponse';
+import Recipe from '../types/IRecipe';
 
 import styles from './Search.module.css';
 
