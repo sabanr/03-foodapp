@@ -4,6 +4,7 @@ import Nav from './components/Nav';
 import Recipe from './types/Recipe.ts';
 import Search from './components/Search';
 import FoodList from './components/FoodList';
+import Container from './components/Container.tsx';
 
 import './App.css';
 
@@ -14,7 +15,9 @@ const App: React.FC = () => {
 		<div className="App">
 			<Nav />
 			<Search foodData={foodData} setFoodData={setFoodData} />
-			<FoodList foodData={foodData} />
+			<Container>
+				<FoodList foodData={foodData} />
+			</Container>
 		</div>
 	);
 };
