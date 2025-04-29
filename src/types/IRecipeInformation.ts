@@ -5,14 +5,9 @@ export default interface IRecipeInformation {
   imageType: string;
   servings: number;
   readyInMinutes: number;
-  license?: string;
-  sourceName?: string;
   sourceUrl: string;
   spoonacularSourceUrl: string;
-  aggregateLikes: number;
-  healthScore: number;
   spoonacularScore?: number;
-  pricePerServing: number;
   analyzedInstructions: IAnalyzedInstruction[];
   extendedIngredients: IExtendedIngredient[];
   summary: string;
@@ -23,6 +18,25 @@ export default interface IRecipeInformation {
   winePairing: IWinePairing;
   instructions?: string;
   originalId?: string | null;
+  vegetarian?: boolean;
+  vegan?: boolean;
+  glutenFree?: boolean;
+  dairyFree?: boolean;
+  veryHealthy?: boolean;
+  cheap?: boolean;
+  veryPopular?: boolean;
+  sustainable?: boolean;
+  weightWatcherSmartPoints?: number;
+  gaps?: string;
+  lowFodmap?: boolean;
+  preparationMinutes?: number;
+  cookingMinutes?: number;
+  aggregateLikes?: number;
+  healthScore?: number;
+  creditsText?: string;
+  license?: string;
+  sourceName?: string;
+  pricePerServing?: number;
 }
 
 export interface IExtendedIngredient {
