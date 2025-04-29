@@ -1,6 +1,6 @@
 import Recipe from '../types/IRecipe';
 
-import styles from './FoodItem.module.css';
+import styles from '../styles/FoodItem.module.css';
 
 interface FoodListProps {
 	recipe: Recipe;

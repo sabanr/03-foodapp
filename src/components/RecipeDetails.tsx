@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import IRecipeInformation from '../types/IRecipeInformation.ts';
 
+import styles from '../styles/RecipeDetails.module.css';
+
 interface IRecipeDetailsProps {
 	recipeId: number;
 }
@@ -40,48 +42,63 @@ const RecipeDetails: React.FC<IRecipeDetailsProps> = ({ recipeId }) => {
 		<div>
 			{recipeInformation && (
 				<div>
-					<div>
-						<h2>{recipeInformation.title}</h2>
+					<div className={styles.recipeCard}>
+						<h2 className={styles.recipeName}>
+							{recipeInformation.title}
+						</h2>
 						<img
+							className={styles.recipeImage}
 							src={recipeInformation.image}
 							alt={recipeInformation.title}
 						/>
-						<div>
+						<div className={styles.recipeDetails}>
 							<span>
-								${' '}
-								{(recipeInformation.pricePerServing ?? 0.0) /
-									100}{' '}
+								$
+								{(
+									(recipeInformation.pricePerServing ?? 0.0) /
+									100
+								).toFixed(2)}{' '}
 								Per serving
 							</span>
+							<span>
+								🧑🏻‍🦰
+								<strong>
+									{recipeInformation.readyInMinutes} Min
+								</strong>
+							</span>
+							<span>
+								<strong>
+									{recipeInformation.servings} Servings
+								</strong>
+							</span>
+							<span>
+								<strong>
+									{recipeInformation.vegetarian
+										? '🥕 Vegetarian'
+										: '🍖 Non-Vegetarian'}
+								</strong>
+							</span>
+							<span>
+								<strong>
+									{recipeInformation.vegan ? 'Vegan' : ''}
+								</strong>
+							</span>
 						</div>
-						<div>
-							<h2>Instructions:</h2>
+						<h2>Instructions:</h2>
+						<div className={styles.recipeInstructions}>
 							{isLoading ? (
 								<p>Loading...</p>
 							) : (
-								recipeInformation.analyzedInstructions[0].steps.map(
-									(s) => <li>{s.step}</li>,
-								)
+								<ol>
+									{recipeInformation.analyzedInstructions[0].steps.map(
+										(s) => (
+											<li key={s.number}>{s.step}</li>
+										),
+									)}
+								</ol>
 							)}
 						</div>
 					</div>
-					<span>
-						🧑🏻‍🦰
-						<strong>
-							{recipeInformation.readyInMinutes} Minutes
-						</strong>
-					</span>
-					<span>
-						<strong>
-							Serves {recipeInformation.servings} Servings
-						</strong>
-					</span>
-					<span>
-						{recipeInformation.vegetarian
-							? '🥕 Vegetarian'
-							: '🍖 Non-Vegetarian'}
-					</span>
-					<span>{recipeInformation.vegan ? 'Vegan' : ''}</span>
 				</div>
 			)}
 		</div>

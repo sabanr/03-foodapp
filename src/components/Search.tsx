@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import ApiResponse from '../types/IApiResponse';
 import Recipe from '../types/IRecipe';
 
-import styles from './Search.module.css';
+import styles from '../styles/Search.module.css';
 
 const API_URL: string = 'https://api.spoonacular.com/recipes/complexSearch';
 
