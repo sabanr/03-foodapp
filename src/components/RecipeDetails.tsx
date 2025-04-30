@@ -84,6 +84,30 @@ const RecipeDetails: React.FC<IRecipeDetailsProps> = ({ recipeId }) => {
 								</strong>
 							</span>
 						</div>
+						<h2>Ingredients</h2>
+						<div>
+							{isLoading ? (
+								<p>Loading...</p>
+							) : (
+								<div>
+									{recipeInformation.extendedIngredients.map(
+										(ingredient) => (
+											<div key={ingredient.id}>
+												<img
+													src={`https://spoonacular.com/cdn/ingredients_100x100/${ingredient.image}`}
+													alt={ingredient.nameClean}
+												/>
+												<h3>{ingredient.name}</h3>
+												<h3>
+													{ingredient.amount}
+													{ingredient.unit}
+												</h3>
+											</div>
+										),
+									)}
+								</div>
+							)}
+						</div>
 						<h2>Instructions:</h2>
 						<div className={styles.recipeInstructions}>
 							{isLoading ? (
